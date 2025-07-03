@@ -5,8 +5,8 @@ import '../styles/about.css';
 
 const About = ({ language }) => {
   const [ref, inView] = useInView({
-    threshold: 0.3,
-    triggerOnce: false
+    threshold: 0.2,
+    triggerOnce: true
   });
 
   const containerVariants = {
@@ -14,21 +14,21 @@ const About = ({ language }) => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3
+        staggerChildren: 0.15,
+        delayChildren: 0.2
       }
     }
   };
 
   const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
+    hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
         type: 'spring',
-        stiffness: 100,
-        damping: 10
+        stiffness: 120,
+        damping: 12
       }
     }
   };
@@ -40,8 +40,8 @@ const About = ({ language }) => {
       company: language === 'fr' ? "École Nationale d'Informatique" : "National Computer Science School",
       period: "2023 - Présent",
       description: language === 'fr' 
-        ? "Spécialisation en développement d'applications et design d'interfaces" 
-        : "Specialization in application development and interface design",
+        ? "Spécialisation en architectures logicielles avancées et expérience utilisateur, avec une approche centrée sur les bonnes pratiques de développement et les méthodologies agiles." 
+        : "Specialization in advanced software architectures and user experience, with a focus on development best practices and agile methodologies.",
       icon: <FiAward />
     },
     {
@@ -50,8 +50,8 @@ const About = ({ language }) => {
       company: language === 'fr' ? "Université de Madagascar" : "University of Madagascar",
       period: "2018 - 2022",
       description: language === 'fr' 
-        ? "Parcours axé sur les systèmes d'information et le développement web" 
-        : "Curriculum focused on information systems and web development",
+        ? "Formation complète couvrant les fondamentaux de l'informatique, avec un accent particulier sur les systèmes distribués et les technologies web modernes." 
+        : "Comprehensive training covering computer science fundamentals, with particular emphasis on distributed systems and modern web technologies.",
       icon: <FiUser />
     },
     {
@@ -60,8 +60,8 @@ const About = ({ language }) => {
       company: "Freelance",
       period: "2020 - Présent",
       description: language === 'fr' 
-        ? "Développement de solutions web sur mesure pour divers clients" 
-        : "Custom web solutions development for various clients",
+        ? "Conception et réalisation d'applications web performantes en utilisant les dernières technologies (React, Node.js, MongoDB), avec une attention particulière à l'optimisation et à la sécurité." 
+        : "Design and implementation of high-performance web applications using the latest technologies (React, Node.js, MongoDB), with special attention to optimization and security.",
       icon: <FiBriefcase />
     }
   ];
@@ -76,13 +76,13 @@ const About = ({ language }) => {
             opacity: 1, 
             y: 0,
             transition: {
-              delay: 0.2,
+              delay: 0.1,
               type: 'spring',
-              stiffness: 100
+              stiffness: 120
             }
           } : {}}
         >
-          {language === 'fr' ? "À propos de moi" : "About me"}
+          {language === 'fr' ? "À propos" : "About"}
         </motion.h2>
 
         <div className="about-content">
@@ -93,34 +93,36 @@ const About = ({ language }) => {
             variants={containerVariants}
           >
             <motion.p variants={itemVariants}>
-              {language === 'fr'
-                ? "Passionné par la création numérique depuis mon plus jeune âge, j'ai développé une expertise à la fois en développement web et en design UX/UI. Mon approche combine une solide compréhension technique avec un sens aigu du design pour créer des expériences digitales mémorables."
-                : "Passionate about digital creation since my early years, I've developed expertise in both web development and UX/UI design. My approach combines strong technical understanding with sharp design sense to create memorable digital experiences."}
-            </motion.p>
-            
-            <motion.p variants={itemVariants}>
-              {language === 'fr'
-                ? "Actuellement étudiant en Master Professionnel à l'École Nationale d'Informatique de Madagascar, je me spécialise dans le développement d'applications modernes et le design d'interfaces utilisateur."
-                : "Currently a Master's student at the National Computer Science School of Madagascar, I'm specializing in modern application development and user interface design."}
-            </motion.p>
-            
-            <motion.p variants={itemVariants}>
-              {language === 'fr'
-                ? "En dehors de mes études, j'aime travailler sur des projets personnels, participer à des hackathons et contribuer à des projets open source pour continuer à apprendre et à me perfectionner."
-                : "Outside of my studies, I enjoy working on personal projects, participating in hackathons and contributing to open source projects to keep learning and improving."}
-            </motion.p>
+  {language === 'fr'
+    ? "Étudiant en première année de master professionnel à l'École Nationale d'Informatique, je me spécialise en développement fullstack avec un intérêt particulier pour l’ingénierie logicielle et l’ergonomie des interfaces. Mes projets académiques et personnels me permettent d’allier rigueur technique et sens pratique pour concevoir des solutions efficaces et intuitives."
+    : "As a first-year master's student at the National School of Computer Science, I specialize in fullstack development with a particular interest in software engineering and user interface design. My academic and personal projects allow me to combine technical rigor with practical thinking to build effective and intuitive solutions."}
+</motion.p>
+
+<motion.p variants={itemVariants}>
+  {language === 'fr'
+    ? "Mon parcours à l'École Nationale d'Informatique m’apporte des bases solides en algorithmique, systèmes et développement web. En parallèle, mes stages et projets en alternance m’aident à mieux comprendre les réalités du métier et les besoins concrets des utilisateurs."
+    : "My studies at the National School of Computer Science provide me with strong foundations in algorithms, systems, and web development. At the same time, my internships and apprenticeship projects help me better understand real-world job expectations and user needs."}
+</motion.p>
+
+<motion.p variants={itemVariants}>
+  {language === 'fr'
+    ? "Curieux et passionné de technologies, je reste à jour sur les dernières innovations et participe à des projets collaboratifs dès que possible. Pour moi, l’apprentissage continu et le partage de connaissances sont essentiels dans ce domaine en constante évolution."
+    : "Curious and passionate about technology, I stay up-to-date with the latest innovations and contribute to collaborative projects whenever possible. I believe continuous learning and knowledge sharing are essential in this ever-evolving field."}
+</motion.p>
+
           </motion.div>
 
           <motion.div
             className="about-image"
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={inView ? { 
               opacity: 1, 
               scale: 1,
               transition: {
-                delay: 0.5,
+                delay: 0.3,
                 type: 'spring',
-                stiffness: 100
+                stiffness: 100,
+                damping: 15
               }
             } : {}}
           >
@@ -128,24 +130,24 @@ const About = ({ language }) => {
               <div className="image-placeholder"></div>
               <motion.div 
                 className="decoration-circle circle-1"
-                animate={{
+                animate={inView ? {
                   scale: [1, 1.1, 1],
                   rotate: [0, 180, 360]
-                }}
+                } : {}}
                 transition={{
-                  duration: 10,
+                  duration: 12,
                   repeat: Infinity,
                   ease: "linear"
                 }}
               />
               <motion.div 
                 className="decoration-circle circle-2"
-                animate={{
-                  scale: [1, 1.2, 1],
+                animate={inView ? {
+                  scale: [1, 1.15, 1],
                   rotate: [360, 180, 0]
-                }}
+                } : {}}
                 transition={{
-                  duration: 15,
+                  duration: 18,
                   repeat: Infinity,
                   ease: "linear"
                 }}
@@ -166,11 +168,13 @@ const About = ({ language }) => {
               className="timeline-item"
               custom={index}
               variants={itemVariants}
-              whileHover={{ y: -5 }}
+              whileHover={{ y: -3 }}
+              transition={{ type: 'spring', stiffness: 300 }}
             >
               <motion.div 
                 className="timeline-icon"
-                whileHover={{ scale: 1.1 }}
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: 'spring', stiffness: 400 }}
               >
                 {item.icon}
               </motion.div>
@@ -178,8 +182,9 @@ const About = ({ language }) => {
               <motion.div 
                 className="timeline-content"
                 whileHover={{ 
-                  boxShadow: "0 10px 30px rgba(0,0,0,0.15)"
+                  boxShadow: "0 8px 25px rgba(0,0,0,0.12)"
                 }}
+                transition={{ duration: 0.3 }}
               >
                 <h3>{item.title}</h3>
                 <span className="timeline-company">{item.company}</span>

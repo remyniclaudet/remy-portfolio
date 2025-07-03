@@ -1,6 +1,12 @@
 .skills {
-  background-color: var(--bg-color);
   position: relative;
+}
+
+.skills-container {
+  width: 90%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 5%;
 }
 
 .skills-grid {

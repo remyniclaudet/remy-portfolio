@@ -19,7 +19,7 @@ export default function App() {
   useEffect(() => {
     // Apply theme to body
     document.body.setAttribute('data-theme', theme);
-    
+
     // Save preferences to localStorage
     localStorage.setItem('portfolio-theme', theme);
     localStorage.setItem('portfolio-language', language);
@@ -29,7 +29,7 @@ export default function App() {
     // Load preferences from localStorage
     const savedTheme = localStorage.getItem('portfolio-theme') || 'light';
     const savedLanguage = localStorage.getItem('portfolio-language') || 'fr';
-    
+
     setTheme(savedTheme);
     setLanguage(savedLanguage);
   }, []);
@@ -42,33 +42,36 @@ export default function App() {
     setLanguage(lang);
   };
 
+  // Modifiez la structure de retour
   return (
     <Router>
-      <div className="app">
-        <Header 
-          theme={theme} 
-          toggleTheme={toggleTheme} 
-          language={language} 
-          toggleLanguage={toggleLanguage} 
-        />
-        
-        <AnimatePresence mode="wait">
-          <Routes>
-            <Route path="/" element={
-              <>
-                <Hero language={language} />
-                <About language={language} />
-                <Skills language={language} />
-                <Projects language={language} />
-                <Contact language={language} />
-              </>
-            } />
-            <Route path="/projects/:id" element={<ProjectDetails />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </AnimatePresence>
-        
-        <Footer language={language} />
+      <Header
+        theme={theme}
+        toggleTheme={toggleTheme}
+        language={language}
+        toggleLanguage={toggleLanguage}
+      />
+
+      <div className="content-wrapper">
+        <div className="main-background">
+          <AnimatePresence mode="wait">
+            <Routes>
+              <Route path="/" element={
+                <>
+                  <Hero language={language} />
+                  <About language={language} />
+                  <Skills language={language} />
+                  <Projects language={language} />
+                  <Contact language={language} />
+                </>
+              } />
+              <Route path="/projects/:id" element={<ProjectDetails />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </AnimatePresence>
+
+          <Footer language={language} />
+        </div>
       </div>
     </Router>
   );

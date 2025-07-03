@@ -95,7 +95,7 @@ const Skills = ({ language }) => {
 
   return (
     <section id="skills" className="skills" ref={ref}>
-      <div className="container">
+      <div className="skills-container">
         <motion.h2
           className="section-title"
           initial={{ opacity: 0, y: 20 }}

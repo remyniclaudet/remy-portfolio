@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { FiMoon, FiSun, FiMenu, FiX } from 'react-icons/fi';
+import { FiMoon, FiSun, FiMenu, FiX, FiChevronDown } from 'react-icons/fi';
 import '../styles/header.css';
 
 const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -24,6 +25,13 @@ const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
     { name: language === 'fr' ? 'Projets' : 'Projects', path: '#projects' },
     { name: language === 'fr' ? 'Contact' : 'Contact', path: '#contact' }
   ];
+
+  const languages = [
+    { code: 'fr', name: 'Français', flag: '/FR.png' },
+    { code: 'en', name: 'English', flag: '/ANG.png' }
+  ];
+
+  const currentLanguage = languages.find(lang => lang.code === language);
 
   const itemVariants = {
     hidden: { opacity: 0, y: -20 },
@@ -84,24 +92,62 @@ const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
         </nav>
 
         <div className="header-actions">
-          <div className="lang-switch">
+          <div 
+            className="lang-selector"
+            onMouseEnter={() => setLangDropdownOpen(true)}
+            onMouseLeave={() => setLangDropdownOpen(false)}
+          >
             <button 
-              className={language === 'fr' ? 'active' : ''}
-              onClick={() => toggleLanguage('fr')}
+              className="lang-button"
+              onClick={() => setLangDropdownOpen(!langDropdownOpen)}
             >
-              FR
+              <img 
+                src={currentLanguage.flag} 
+                alt={currentLanguage.name} 
+                className="flag-icon"
+              />
+              <span>{currentLanguage.code.toUpperCase()}</span>
+              <FiChevronDown size={14} />
             </button>
-            <button 
-              className={language === 'en' ? 'active' : ''}
-              onClick={() => toggleLanguage('en')}
-            >
-              EN
-            </button>
+            
+            <AnimatePresence>
+              {langDropdownOpen && (
+                <motion.div
+                  className="lang-dropdown"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {languages.map((lang) => (
+                    <div
+                      key={lang.code}
+                      className="lang-option"
+                      onClick={() => {
+                        toggleLanguage(lang.code);
+                        setLangDropdownOpen(false);
+                      }}
+                    >
+                      <img 
+                        src={lang.flag} 
+                        alt={lang.name} 
+                        className="flag-icon"
+                      />
+                      <span>{lang.name}</span>
+                    </div>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
           
-          <div className="theme-switch" onClick={toggleTheme}>
-            <FiSun />
-            <FiMoon />
+          <div 
+            className="theme-switch" 
+            onClick={toggleTheme}
+            title={language === 'fr' ? 'Changer de thème' : 'Toggle theme'}
+          >
+            <FiSun className="theme-icon" />
+            <FiMoon className="theme-icon" />
             <span className="switch-handle"></span>
           </div>
 
@@ -110,6 +156,7 @@ const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
+            aria-label={language === 'fr' ? 'Menu mobile' : 'Mobile menu'}
           >
             {mobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
           </motion.button>

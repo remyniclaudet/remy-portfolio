@@ -3,6 +3,10 @@
   position: relative;
 }
 
+.container-contact {
+  padding: 0 17%;
+}
+
 .contact-content {
   display: flex;
   gap: 50px;

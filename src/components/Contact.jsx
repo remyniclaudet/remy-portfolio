@@ -76,7 +76,7 @@ const Contact = ({ language }) => {
 
   return (
     <section id="contact" className="contact" ref={ref}>
-      <div className="container">
+      <div className="container-contact">
         <motion.h2
           className="section-title"
           initial={{ opacity: 0, y: 20 }}

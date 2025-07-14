@@ -3,6 +3,7 @@
   position: relative;
 }
 
+
 .filters {
   display: flex;
   flex-wrap: wrap;
@@ -10,6 +11,7 @@
   justify-content: center;
   margin-bottom: 40px;
 }
+
 
 .filter-btn {
   padding: 8px 20px;
@@ -36,9 +38,10 @@
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
   gap: 30px;
 }
+
 
 .project-card {
   background-color: var(--card-bg);
@@ -116,7 +119,7 @@
 }
 
 .project-content {
-  padding: 20px;
+  padding: 40px;
 }
 
 .project-content h3 {

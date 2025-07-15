@@ -16,9 +16,8 @@ const Skills = ({ language }) => {
       skills: [
         { name: "HTML/CSS", level: 95 },
         { name: "JavaScript", level: 90 },
-        { name: "React", level: 85 },
-        { name: "Vue.js", level: 80 },
-        { name: "TypeScript", level: 75 }
+        { name: "React", level: 70 },
+        { name: "Vue.js", level: 50 },
       ]
     },
     {
@@ -28,7 +27,7 @@ const Skills = ({ language }) => {
         { name: "Node.js", level: 85 },
         { name: "Express", level: 80 },
         { name: "Python", level: 75 },
-        { name: "MongoDB", level: 80 },
+        { name: "PHP", level: 80 },
         { name: "PostgreSQL", level: 70 }
       ]
     },

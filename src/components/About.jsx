@@ -36,54 +36,55 @@ const About = ({ language }) => {
   const timelineItems = [
     {
       id: 1,
-      title: language === 'fr' ? "Master Professionnel" : "Professional Master",
-      company: language === 'fr' ? "École Nationale d'Informatique" : "National Computer Science School",
-      period: "2024 - Present",
-      description: language === 'fr' 
-        ? "Première année en Master Professiionnel à 'Ecole Nationle d'Informatique de Madagascar en Informatiue génerale (Logiciel et réeau)." 
-        : "Specialization in advanced software architectures and user experience, with a focus on development best practices and agile methodologies.",
+      title: language === 'fr' ? "Master Professionnel" : "Professional Master's Degree",
+      company: language === 'fr' ? "École Nationale d'Informatique" : "National School of Computer Science",
+      period: "2024 - Présent",
+      description: language === 'fr'
+        ? "Première année de Master Professionnel à l'École Nationale d'Informatique de Madagascar, en Informatique Générale (logiciels et réseaux)."
+        : "First year of a Professional Master's at the National School of Computer Science of Madagascar, specializing in general IT (software and networks).",
       icon: <FiAward />
     },
     {
       id: 2,
-      title: language === 'fr' ? "Licence en Informatique" : "Bachelor in Computer Science",
-      company: language === 'fr' ? "Université de Madagascar" : "University of Madagascar",
-      period: "2018 - 2022",
-      description: language === 'fr' 
-        ? "Formation complète couvrant les fondamentaux de l'informatique, avec un accent particulier sur les systèmes distribués et les technologies web modernes." 
-        : "Comprehensive training covering computer science fundamentals, with particular emphasis on distributed systems and modern web technologies.",
+      title: language === 'fr' ? "Licence Professionnelle" : "Bachelor's Degree in Computer Science",
+      company: language === 'fr' ? "École Nationale d'Informatique" : "National School of Computer Science",
+      period: "Décembre 2024",
+      description: language === 'fr'
+        ? "Obtention de la Licence Professionnelle avec un projet de fin d'études : conception et réalisation d’une plateforme e-learning pour le centre de formation Spray Info."
+        : "Earned a Bachelor's Degree with a final year project: design and development of an e-learning platform for the training center Spray Info.",
       icon: <FiUser />
     },
     {
       id: 3,
-      title: language === 'fr' ? "Développeur Fullstack" : "Fullstack Developer",
-      company: "Freelance",
-      period: "2020 - Présent",
-      description: language === 'fr' 
-        ? "Conception et réalisation d'applications web performantes en utilisant les dernières technologies (React, Node.js, MongoDB), avec une attention particulière à l'optimisation et à la sécurité. Compréhension des notions réseaux pour l’intégration des systèmes." 
-        : "Design and implementation of high-performance web applications using the latest technologies (React, Node.js, MongoDB), with a good understanding of networking basics for system integration.",
+      title: language === 'fr' ? "Troisième année de licence" : "Third Year of Bachelor's Degree",
+      company: language === 'fr' ? "École Nationale d'Informatique" : "National School of Computer Science",
+      period: "2023 - 2024",
+      description: language === 'fr'
+        ? "Développement d'applications web avec React, Node.js, MySQL et d'applications desktop avec Java. Passage sécurisé du protocole HTTP vers HTTPS."
+        : "Developed web applications using React, Node.js, and MySQL, and desktop applications with Java. Implemented HTTPS for secure communication.",
       icon: <FiBriefcase />
     },
-      {
-      id: 3,
-      title: language === 'fr' ? "Développeur Fullstack" : "Fullstack Developer",
-      company: "Freelance",
-      period: "2020 - Présent",
-      description: language === 'fr' 
-        ? "Conception et réalisation d'applications web performantes en utilisant les dernières technologies (React, Node.js, MongoDB), avec une attention particulière à l'optimisation et à la sécurité. Compréhension des notions réseaux pour l’intégration des systèmes." 
-        : "Design and implementation of high-performance web applications using the latest technologies (React, Node.js, MongoDB), with a good understanding of networking basics for system integration.",
+    {
+      id: 4,
+      title: language === 'fr' ? "Deuxième année de licence" : "Second Year of Bachelor's Degree",
+      company: language === 'fr' ? "École Nationale d'Informatique" : "National School of Computer Science",
+      period: "2022 - 2023",
+      description: language === 'fr'
+        ? "Création de sites web avec JSP, HTML et CSS, et d'applications desktop en C#. Mise en œuvre de projets réseau avec routage IP."
+        : "Built web applications using JSP, HTML, and CSS, and desktop applications with C#. Worked on network projects involving IP routing.",
       icon: <FiBriefcase />
-      }
+    }
   ];
+
 
   return (
     <section id="about" className="about" ref={ref}>
-      <div className="container-">
+      <div className="container">
         <motion.h2
           className="section-title"
           initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { 
-            opacity: 1, 
+          animate={inView ? {
+            opacity: 1,
             y: 0,
             transition: {
               delay: 0.1,
@@ -135,15 +136,15 @@ const About = ({ language }) => {
               whileHover={{ y: -3 }}
               transition={{ type: 'spring', stiffness: 300 }}
             >
-              <motion.div 
+              <motion.div
                 className="timeline-icon"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: 'spring', stiffness: 400 }}
               >
                 {item.icon}
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 className="timeline-content"
                 whileHover={{ boxShadow: "0 8px 25px rgba(0,0,0,0.12)" }}
                 transition={{ duration: 0.3 }}

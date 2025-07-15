@@ -4,6 +4,8 @@ import { useInView } from 'react-intersection-observer';
 import { FiGithub, FiExternalLink } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import '../styles/projects.css';
+import spray from '../assets/logo 1.png'
+import visite from '../assets/logo 2.png'
 
 const Projects = ({ language }) => {
   const [ref, inView] = useInView({
@@ -16,12 +18,12 @@ const Projects = ({ language }) => {
   const projectsData = [
     {
       id: 1,
-      title: language === 'fr' ? "Application E-commerce" : "E-commerce App",
+      title: language === 'fr' ? "Application E-learning" : "E-learning App",
       description: language === 'fr' 
         ? "Plateforme complète de e-commerce avec panier, paiement et dashboard admin." 
         : "Complete e-commerce platform with cart, payment and admin dashboard.",
-      tags: ["React", "Node.js", "MongoDB", "Redux"],
-      image: "/placeholder-project1.jpg",
+      tags: ["React", "Node.js", "MariaDB"],
+      image: spray,
       github: "#",
       live: "#"
     },
@@ -32,18 +34,18 @@ const Projects = ({ language }) => {
         ? "Application de réseau social avec fonctionnalités de publication et commentaires." 
         : "Social network application with post and comment features.",
       tags: ["Vue.js", "Firebase", "TailwindCSS"],
-      image: "/placeholder-project2.jpg",
+      image: "/src/assets",
       github: "#",
       live: "#"
     },
     {
       id: 3,
-      title: language === 'fr' ? "Dashboard Analytique" : "Analytics Dashboard",
+      title: language === 'fr' ? "Gestion de visite médicale" : "Analytics Dashboard",
       description: language === 'fr' 
         ? "Tableau de bord de données avec visualisations interactives et filtres." 
         : "Data dashboard with interactive visualizations and filters.",
       tags: ["React", "D3.js", "TypeScript"],
-      image: "/placeholder-project3.jpg",
+      image: visite,
       github: "#",
       live: "#"
     },

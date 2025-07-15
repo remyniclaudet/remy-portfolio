@@ -32,7 +32,7 @@ const Skills = ({ language }) => {
       ]
     },
     {
-      category: language === 'fr' ? "Design" : "Design",
+      category: language === 'fr' ? "Outils" : "Tools",
       icon: <FiTool />,
       skills: [
         { name: "Figma", level: 60 },

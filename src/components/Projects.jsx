@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FiGithub, FiExternalLink } from 'react-icons/fi';
@@ -7,7 +7,7 @@ import '../styles/projects.css';
 import spray from '../assets/logo 1.png';
 import visite from '../assets/logo 2.png';
 import voiture from '../assets/logo 3.webp';
-import routeip from '../assets/ip.png'
+import routeip from '../assets/ip.png';
 
 const Projects = ({ language }) => {
   const [ref, inView] = useInView({
@@ -15,7 +15,8 @@ const Projects = ({ language }) => {
     triggerOnce: false
   });
 
-  const projectsData = [
+  // Mémorisation des données des projets
+  const projectsData = useMemo(() => [
     {
       id: 1,
       title: language === 'fr' ? "Application E-learning" : "E-learning App",
@@ -60,30 +61,28 @@ const Projects = ({ language }) => {
       github: "#",
       live: "#"
     }
-  ];
+  ], [language]);
 
   const [filter, setFilter] = useState(language === 'fr' ? "Tous" : "All");
-  const [filteredProjects, setFilteredProjects] = useState([]);
 
-  const allTags = [
+  // Mémorisation des tags uniques
+  const allTags = useMemo(() => [
     language === 'fr' ? "Tous" : "All",
     ...new Set(projectsData.flatMap(project => project.tags))
-  ];
+  ], [projectsData, language]);
 
-  // Met à jour le filtre si la langue change
+  // Mémorisation des projets filtrés
+  const filteredProjects = useMemo(() => {
+    if (filter === (language === 'fr' ? "Tous" : "All")) {
+      return projectsData;
+    }
+    return projectsData.filter(project => project.tags.includes(filter));
+  }, [filter, language, projectsData]);
+
+  // Reset du filtre quand la langue change
   useEffect(() => {
     setFilter(language === 'fr' ? "Tous" : "All");
   }, [language]);
-
-  useEffect(() => {
-    if (filter === (language === 'fr' ? "Tous" : "All")) {
-      setFilteredProjects(projectsData);
-    } else {
-      setFilteredProjects(
-        projectsData.filter(project => project.tags.includes(filter))
-      );
-    }
-  }, [filter, language, projectsData]);
 
   const containerVariants = {
     hidden: { opacity: 0 },

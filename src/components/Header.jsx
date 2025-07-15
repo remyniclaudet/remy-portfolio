@@ -62,34 +62,34 @@ const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
           <Link to="/">RAZAKATSARA</Link>
         </motion.div>
 
-        <nav className="desktop-nav">
-          <motion.ul
-            initial="hidden"
-            animate="visible"
-            variants={{
-              visible: {
-                transition: { staggerChildren: 0.1 }
-              }
-            }}
-          >
-            {navLinks.map((link, i) => (
-              <motion.li 
-                key={link.name}
-                custom={i}
-                variants={itemVariants}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link
-                  to={link.path}
-                  className={location.hash === link.path ? 'active' : ''}
-                >
-                  {link.name}
-                </Link>
-              </motion.li>
-            ))}
-          </motion.ul>
-        </nav>
+     <nav className="desktop-nav">
+  <motion.ul
+    initial="hidden"
+    animate="visible"
+    variants={{
+      visible: {
+        transition: { staggerChildren: 0.1 }
+      }
+    }}
+  >
+    {navLinks.map((link, i) => (
+      <motion.li 
+        key={link.name}
+        custom={i}
+        variants={itemVariants}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <a
+          href={link.path}
+          className={location.hash === link.path ? 'active' : ''}
+        >
+          {link.name}
+        </a>
+      </motion.li>
+    ))}
+  </motion.ul>
+</nav>
 
         <div className="header-actions">
           <div 
@@ -158,11 +158,11 @@ const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
             whileTap={{ scale: 0.9 }}
             aria-label={language === 'fr' ? 'Menu mobile' : 'Mobile menu'}
           >
-            {mobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+            {mobileMenuOpen ? <FiX size={24} /> :  <FiMenu size={24} />}
           </motion.button>
         </div>
 
-        <AnimatePresence>
+         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
               className="mobile-menu"
@@ -179,12 +179,12 @@ const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    <Link
-                      to={link.path}
+                    <a
+                      href={link.path}
                       className={location.hash === link.path ? 'active' : ''}
                     >
                       {link.name}
-                    </Link>
+                    </a>
                   </motion.li>
                 ))}
               </ul>

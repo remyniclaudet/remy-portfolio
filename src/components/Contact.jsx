@@ -76,7 +76,7 @@ const Contact = ({ language }) => {
               <div className="info-icon"><FiMail /></div>
               <div className="info-content">
                 <h3>Email</h3>
-                <a href="mailto:contact@remyniclaudet.com">contact@remyniclaudet.com</a>
+                <a href="mailto:niclaudet.raz@gmail.com">niclaudet.raz@gmail.com</a>
               </div>
             </motion.div>
 
@@ -96,8 +96,8 @@ const Contact = ({ language }) => {
               <div className="info-icon"><FaWhatsapp /></div>
               <div className="info-content">
                 <h3>WhatsApp</h3>
-                <a href="https://wa.me/261331234567" target="_blank" rel="noopener noreferrer">
-                  +261 33 12 34 567
+                <a href="https://wa.me/261323882147" target="_blank" rel="noopener noreferrer">
+                  +261 32 38 821 47
                 </a>
               </div>
             </motion.div>
@@ -107,7 +107,7 @@ const Contact = ({ language }) => {
               <div className="info-icon"><FiPhone /></div>
               <div className="info-content">
                 <h3>{language === 'fr' ? "Téléphone" : "Phone"}</h3>
-                <a href="tel:+261331234567">+261 33 12 34 567</a>
+                <a href="tel:+261346384075">+261 34 63 840 75</a>
               </div>
             </motion.div>
           </motion.div>

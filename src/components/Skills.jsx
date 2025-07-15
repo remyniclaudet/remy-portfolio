@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FiCode, FiLayers, FiDatabase, FiPenTool, FiGlobe } from 'react-icons/fi';
+import { FiCode, FiLayers, FiDatabase, FiTool, FiGlobe } from 'react-icons/fi';
 import '../styles/skills.css';
 
 const Skills = ({ language }) => {
@@ -33,13 +33,13 @@ const Skills = ({ language }) => {
     },
     {
       category: language === 'fr' ? "Design" : "Design",
-      icon: <FiPenTool />,
+      icon: <FiTool />,
       skills: [
-        { name: "UI/UX Design", level: 90 },
-        { name: "Figma", level: 85 },
-        { name: "Adobe XD", level: 80 },
-        { name: "Prototypage", level: 85 },
-        { name: "Design System", level: 75 }
+        { name: "Figma", level: 60 },
+        { name: "Canva", level: 85 },
+        { name: "Git", level: 80 },
+        { name: "Wireshark", level: 85 },
+        { name: "GNS3", level: 75 }
       ]
     },
   

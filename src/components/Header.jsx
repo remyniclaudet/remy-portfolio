@@ -19,7 +19,7 @@ const Header = ({ theme, toggleTheme, language, toggleLanguage }) => {
   }, []);
 
   const navLinks = [
-    { name: language === 'fr' ? 'Accueil' : 'Home', path: '/' },
+    { name: language === 'fr' ? 'Accueil' : 'Home', path: '#home' },
     { name: language === 'fr' ? 'À propos' : 'About', path: '#about' },
     { name: language === 'fr' ? 'Compétences' : 'Skills', path: '#skills' },
     { name: language === 'fr' ? 'Projets' : 'Projects', path: '#projects' },

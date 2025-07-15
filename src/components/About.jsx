@@ -38,9 +38,9 @@ const About = ({ language }) => {
       id: 1,
       title: language === 'fr' ? "Master Professionnel" : "Professional Master",
       company: language === 'fr' ? "École Nationale d'Informatique" : "National Computer Science School",
-      period: "2023 - Présent",
+      period: "2024 - Present",
       description: language === 'fr' 
-        ? "Spécialisation en architectures logicielles avancées et expérience utilisateur, avec une approche centrée sur les bonnes pratiques de développement et les méthodologies agiles." 
+        ? "Première année en Master Professiionnel à 'Ecole Nationle d'Informatique de Madagascar en Informatiue génerale (Logiciel et réeau)." 
         : "Specialization in advanced software architectures and user experience, with a focus on development best practices and agile methodologies.",
       icon: <FiAward />
     },
@@ -60,15 +60,25 @@ const About = ({ language }) => {
       company: "Freelance",
       period: "2020 - Présent",
       description: language === 'fr' 
-        ? "Conception et réalisation d'applications web performantes en utilisant les dernières technologies (React, Node.js, MongoDB), avec une attention particulière à l'optimisation et à la sécurité." 
-        : "Design and implementation of high-performance web applications using the latest technologies (React, Node.js, MongoDB), with special attention to optimization and security.",
+        ? "Conception et réalisation d'applications web performantes en utilisant les dernières technologies (React, Node.js, MongoDB), avec une attention particulière à l'optimisation et à la sécurité. Compréhension des notions réseaux pour l’intégration des systèmes." 
+        : "Design and implementation of high-performance web applications using the latest technologies (React, Node.js, MongoDB), with a good understanding of networking basics for system integration.",
       icon: <FiBriefcase />
-    }
+    },
+      {
+      id: 3,
+      title: language === 'fr' ? "Développeur Fullstack" : "Fullstack Developer",
+      company: "Freelance",
+      period: "2020 - Présent",
+      description: language === 'fr' 
+        ? "Conception et réalisation d'applications web performantes en utilisant les dernières technologies (React, Node.js, MongoDB), avec une attention particulière à l'optimisation et à la sécurité. Compréhension des notions réseaux pour l’intégration des systèmes." 
+        : "Design and implementation of high-performance web applications using the latest technologies (React, Node.js, MongoDB), with a good understanding of networking basics for system integration.",
+      icon: <FiBriefcase />
+      }
   ];
 
   return (
     <section id="about" className="about" ref={ref}>
-      <div className="container">
+      <div className="container-">
         <motion.h2
           className="section-title"
           initial={{ opacity: 0, y: 20 }}
@@ -85,76 +95,30 @@ const About = ({ language }) => {
           {language === 'fr' ? "À propos" : "About"}
         </motion.h2>
 
-        <div className="about-content">
-          <motion.div
-            className="about-text"
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            variants={containerVariants}
-          >
-            <motion.p variants={itemVariants}>
-  {language === 'fr'
-    ? "Étudiant en première année de master professionnel à l'École Nationale d'Informatique, je me spécialise en développement fullstack avec un intérêt particulier pour l’ingénierie logicielle et l’ergonomie des interfaces. Mes projets académiques et personnels me permettent d’allier rigueur technique et sens pratique pour concevoir des solutions efficaces et intuitives."
-    : "As a first-year master's student at the National School of Computer Science, I specialize in fullstack development with a particular interest in software engineering and user interface design. My academic and personal projects allow me to combine technical rigor with practical thinking to build effective and intuitive solutions."}
-</motion.p>
+        <motion.div
+          className="about-text only"
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={containerVariants}
+        >
+          <motion.p variants={itemVariants}>
+            {language === 'fr'
+              ? "Étudiant en première année de master professionnel à l'École Nationale d'Informatique, je me spécialise en développement fullstack avec un intérêt particulier pour l’ingénierie logicielle et l’ergonomie des interfaces. Mes projets académiques et personnels me permettent d’allier rigueur technique et sens pratique pour concevoir des solutions efficaces et intuitives."
+              : "As a first-year master's student at the National School of Computer Science, I specialize in fullstack development with a particular interest in software engineering and user interface design. My academic and personal projects allow me to combine technical rigor with practical thinking to build effective and intuitive solutions."}
+          </motion.p>
 
-<motion.p variants={itemVariants}>
-  {language === 'fr'
-    ? "Mon parcours à l'École Nationale d'Informatique m’apporte des bases solides en algorithmique, systèmes et développement web. En parallèle, mes stages et projets en alternance m’aident à mieux comprendre les réalités du métier et les besoins concrets des utilisateurs."
-    : "My studies at the National School of Computer Science provide me with strong foundations in algorithms, systems, and web development. At the same time, my internships and apprenticeship projects help me better understand real-world job expectations and user needs."}
-</motion.p>
+          <motion.p variants={itemVariants}>
+            {language === 'fr'
+              ? "Mon parcours m’a permis d’acquérir des bases solides en algorithmique, développement web et systèmes. Je possède également une bonne compréhension des notions de réseau, utiles dans l’intégration de systèmes distribués."
+              : "My background has given me solid foundations in algorithms, web development, and systems. I also have a good understanding of networking basics, useful for distributed system integration."}
+          </motion.p>
 
-<motion.p variants={itemVariants}>
-  {language === 'fr'
-    ? "Curieux et passionné de technologies, je reste à jour sur les dernières innovations et participe à des projets collaboratifs dès que possible. Pour moi, l’apprentissage continu et le partage de connaissances sont essentiels dans ce domaine en constante évolution."
-    : "Curious and passionate about technology, I stay up-to-date with the latest innovations and contribute to collaborative projects whenever possible. I believe continuous learning and knowledge sharing are essential in this ever-evolving field."}
-</motion.p>
-
-          </motion.div>
-
-          <motion.div
-            className="about-image"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={inView ? { 
-              opacity: 1, 
-              scale: 1,
-              transition: {
-                delay: 0.3,
-                type: 'spring',
-                stiffness: 100,
-                damping: 15
-              }
-            } : {}}
-          >
-            <div className="image-container">
-              <div className="image-placeholder"></div>
-              <motion.div 
-                className="decoration-circle circle-1"
-                animate={inView ? {
-                  scale: [1, 1.1, 1],
-                  rotate: [0, 180, 360]
-                } : {}}
-                transition={{
-                  duration: 12,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-              />
-              <motion.div 
-                className="decoration-circle circle-2"
-                animate={inView ? {
-                  scale: [1, 1.15, 1],
-                  rotate: [360, 180, 0]
-                } : {}}
-                transition={{
-                  duration: 18,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-              />
-            </div>
-          </motion.div>
-        </div>
+          <motion.p variants={itemVariants}>
+            {language === 'fr'
+              ? "Curieux et passionné de technologies, je reste à jour sur les dernières innovations et participe à des projets collaboratifs dès que possible. Pour moi, l’apprentissage continu et le partage de connaissances sont essentiels dans ce domaine en constante évolution."
+              : "Curious and passionate about technology, I stay up-to-date with the latest innovations and contribute to collaborative projects whenever possible. I believe continuous learning and knowledge sharing are essential in this ever-evolving field."}
+          </motion.p>
+        </motion.div>
 
         <motion.div
           className="timeline"
@@ -181,9 +145,7 @@ const About = ({ language }) => {
               
               <motion.div 
                 className="timeline-content"
-                whileHover={{ 
-                  boxShadow: "0 8px 25px rgba(0,0,0,0.12)"
-                }}
+                whileHover={{ boxShadow: "0 8px 25px rgba(0,0,0,0.12)" }}
                 transition={{ duration: 0.3 }}
               >
                 <h3>{item.title}</h3>

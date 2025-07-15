@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FiCode, FiLayers, FiDatabase, FiPenTool } from 'react-icons/fi';
+import { FiCode, FiLayers, FiDatabase, FiPenTool, FiGlobe } from 'react-icons/fi';
 import '../styles/skills.css';
 
 const Skills = ({ language }) => {
@@ -43,15 +43,16 @@ const Skills = ({ language }) => {
         { name: "Design System", level: 75 }
       ]
     },
+  
     {
-      category: language === 'fr' ? "Outils" : "Tools",
-      icon: <FiLayers />,
+      category: language === 'fr' ? "Notions Réseau" : "Networking Basics",
+      icon: <FiGlobe />,
       skills: [
-        { name: "Git", level: 85 },
-        { name: "Docker", level: 75 },
-        { name: "CI/CD", level: 70 },
-        { name: "Webpack", level: 65 },
-        { name: "Jest", level: 70 }
+        { name: "TCP/IP, LAN, WAN" },
+        { name: "Architecture OSI" },
+        { name: "Routeurs & Switch" },
+        { name: "Routage IP" },
+        { name: "Protocoles HTTP, FTP, DNS" }
       ]
     }
   ];
@@ -155,20 +156,22 @@ const Skills = ({ language }) => {
                   <div key={skill.name} className="skill-item">
                     <div className="skill-info">
                       <span>{skill.name}</span>
-                      <span>{skill.level}%</span>
+                      {skill.level ? <span>{skill.level}%</span> : null}
                     </div>
-                    <div className="progress-bar">
-                      <motion.div
-                        className="progress"
-                        variants={progressVariants}
-                        custom={skill.level}
-                        initial="hidden"
-                        animate={inView ? "visible" : "hidden"}
-                        style={{ 
-                          background: `linear-gradient(90deg, var(--primary), var(--secondary))`
-                        }}
-                      />
-                    </div>
+                    {skill.level && (
+                      <div className="progress-bar">
+                        <motion.div
+                          className="progress"
+                          variants={progressVariants}
+                          custom={skill.level}
+                          initial="hidden"
+                          animate={inView ? "visible" : "hidden"}
+                          style={{ 
+                            background: `linear-gradient(90deg, var(--primary), var(--secondary))`
+                          }}
+                        />
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

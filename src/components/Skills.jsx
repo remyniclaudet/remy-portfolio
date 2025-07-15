@@ -37,9 +37,9 @@ const Skills = ({ language }) => {
       skills: [
         { name: "Figma", level: 60 },
         { name: "Canva", level: 85 },
-        { name: "Git", level: 80 },
-        { name: "Wireshark", level: 85 },
-        { name: "GNS3", level: 75 }
+        { name: "Git", level: 75 },
+        { name: "Wireshark", level: 50 },
+        { name: "GNS3", level: 50 }
       ]
     },
   

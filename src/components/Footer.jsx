@@ -88,24 +88,7 @@ const Footer = ({ language }) => {
               >
                 <FiLinkedin />
               </motion.a>
-              <motion.a
-                href="https://twitter.com/remyniclaudet"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -5, scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <FiTwitter />
-              </motion.a>
-              <motion.a
-                href="https://instagram.com/remyniclaudet"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -5, scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <FiInstagram />
-              </motion.a>
+
             </div>
           </motion.div>
 

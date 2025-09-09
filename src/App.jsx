@@ -8,7 +8,7 @@ import Projects from './sections/Projects';
 import Contact from './sections/Contact';
 import ProjectDetail from './pages/ProjectDetail';
 
-function HomePage() {
+function App() {
   return (
     <>
       <Hero />

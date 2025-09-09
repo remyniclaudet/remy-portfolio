@@ -1,21 +1,25 @@
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
+import { FiGithub, FiLinkedin, FiDribbble } from 'react-icons/fi';
 
 const Footer = () => {
   const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
 
-  // Scroll vers section sur la home
-  const scrollToId = (id) => {
+  const scrollToSection = (hash) => {
     if (window.location.pathname !== '/') {
       navigate('/');
       setTimeout(() => {
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 300);
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
     } else {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -40,50 +44,88 @@ const Footer = () => {
               </motion.div>
             </div>
 
-          <motion.div 
-            className="footer-social"
-            variants={itemVariants}
-          >
-            <h3>{language === 'fr' ? "Suivez-moi" : "Follow me"}</h3>
-            <div className="social-icons">
-              <motion.a
-                href="https://github.com/remyniclaudet"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -5, scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <FiGithub />
-              </motion.a>
-              <motion.a
-                href="https://linkedin.com/in/remyniclaudet"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -5, scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <FiLinkedin />
-              </motion.a>
-              <motion.a
-                href="https://twitter.com/remyniclaudet"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -5, scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <FiTwitter />
-              </motion.a>
-              <motion.a
-                href="https://instagram.com/remyniclaudet"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -5, scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <FiInstagram />
-              </motion.a>
-            </div>
-          </motion.div>
+            {/* Liens rapides */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-white font-semibold mb-4">Navigation</h3>
+              <ul className="space-y-3">
+                <li>
+                  <Link to="/" className="text-dark-300 hover:text-primary-400 transition-colors">Accueil</Link>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => scrollToSection('#a-propos')}
+                    className="text-dark-300 hover:text-primary-400 transition-colors"
+                  >
+                    À propos
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => scrollToSection('#competences')}
+                    className="text-dark-300 hover:text-primary-400 transition-colors"
+                  >
+                    Compétences
+                  </button>
+                </li>
+                <li>
+                  <Link to="/projets" className="text-dark-300 hover:text-primary-400 transition-colors">Projets</Link>
+                </li>
+                <li>
+                  <Link to="/contact" className="text-dark-300 hover:text-primary-400 transition-colors">Contact</Link>
+                </li>
+              </ul>
+            </motion.div>
+
+            {/* Réseaux sociaux */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-white font-semibold mb-4">Connectons-nous</h3>
+              <div className="flex space-x-4">
+                <motion.a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="w-10 h-10 bg-dark-800 rounded-lg flex items-center justify-center text-dark-300 hover:bg-primary-500 hover:text-white transition-all"
+                >
+                  <FiGithub className="w-5 h-5" />
+                </motion.a>
+                <motion.a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="w-10 h-10 bg-dark-800 rounded-lg flex items-center justify-center text-dark-300 hover:bg-primary-500 hover:text-white transition-all"
+                >
+                  <FiLinkedin className="w-5 h-5" />
+                </motion.a>
+                <motion.a
+                  href="https://dribbble.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="w-10 h-10 bg-dark-800 rounded-lg flex items-center justify-center text-dark-300 hover:bg-primary-500 hover:text-white transition-all"
+                >
+                  <FiDribbble className="w-5 h-5" />
+                </motion.a>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Barre de séparation */}
+          <div className="border-t border-dark-800/50 my-8"></div>
 
           {/* Copyright */}
           <motion.div

@@ -1,78 +1,40 @@
-import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import About from './components/About';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
+import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import ProjectDetails from './components/ProjectDetails';
-import NotFound from './components/NotFound';
-import './App.css';
+import Hero from './sections/Hero';
+import About from './sections/About';
+import Skills from './sections/Skills';
+import Projects from './sections/Projects';
+import Contact from './sections/Contact';
+import ProjectDetail from './pages/ProjectDetail';
 
-export default function App() {
-  const [theme, setTheme] = useState('light');
-  const [language, setLanguage] = useState('fr');
+function HomePage() {
+  return (
+    <>
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Contact />
+    </>
+  );
+}
 
-  useEffect(() => {
-    // Apply theme to body
-    document.body.setAttribute('data-theme', theme);
-
-    // Save preferences to localStorage
-    localStorage.setItem('portfolio-theme', theme);
-    localStorage.setItem('portfolio-language', language);
-  }, [theme, language]);
-
-  useEffect(() => {
-    // Load preferences from localStorage
-    const savedTheme = localStorage.getItem('portfolio-theme') || 'light';
-    const savedLanguage = localStorage.getItem('portfolio-language') || 'fr';
-
-    setTheme(savedTheme);
-    setLanguage(savedLanguage);
-  }, []);
-
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  };
-
-  const toggleLanguage = (lang) => {
-    setLanguage(lang);
-  };
-
-  // Modifiez la structure de retour
+function App() {
   return (
     <Router>
-      <Header
-        theme={theme}
-        toggleTheme={toggleTheme}
-        language={language}
-        toggleLanguage={toggleLanguage}
-      />
-
-      <div className="content-wrapper">
-        <div className="main-background">
-          <AnimatePresence mode="wait">
-            <Routes>
-              <Route path="/" element={
-                <>
-                  <Hero language={language} />
-                  <About language={language} />
-                  <Skills language={language} />
-                  <Projects language={language} />
-                  <Contact language={language} />
-                </>
-              } />
-              <Route path="/projects/:id" element={<ProjectDetails />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </AnimatePresence>
-
-          <Footer language={language} />
-        </div>
+      <div className="App bg-dark-900 min-h-screen">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/projets" element={<Projects />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/projet/:id" element={<ProjectDetail />} />
+        </Routes>
+        <Footer />
       </div>
     </Router>
   );
 }
+
+export default App;
